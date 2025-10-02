@@ -24,6 +24,15 @@ export default {
         serif: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
         heading: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
         body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        inter: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        playfair: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
+      },
+      fontWeight: {
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
+        extrabold: "800",
       },
       colors: {
         border: "hsl(var(--border))",

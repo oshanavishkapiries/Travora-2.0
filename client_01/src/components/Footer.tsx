@@ -45,7 +45,7 @@ const Footer = () => {
         </Button>
       </div> */}
 
-      <footer className="bg-foreground text-background">
+      <footer className="bg-[#1b1b19] text-background">
         <div className="container mx-auto max-w-7xl px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Brand Info */}
@@ -78,7 +78,7 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-semibold mb-4">Quick Links</h3>
+              <h3 className="font-semibold text-white mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
@@ -95,7 +95,7 @@ const Footer = () => {
 
             {/* Company */}
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
+              <h3 className="font-semibold text-white mb-4">Company</h3>
               <ul className="space-y-2">
                 {companyLinks.map((link, index) => (
                   <li key={index}>
@@ -112,7 +112,7 @@ const Footer = () => {
 
             {/* Social & Legal */}
             <div>
-              <h3 className="font-semibold mb-4">Follow Us</h3>
+              <h3 className="font-semibold text-white mb-4">Follow Us</h3>
               <div className="flex space-x-3 mb-6">
                 {socialLinks.map((social, index) => (
                   <a

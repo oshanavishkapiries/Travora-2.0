@@ -140,18 +140,18 @@ const AttractionsSection = () => {
   };
 
   return (
-    <section id="attractions" className="py-4 bg-gray-50">
-      <div className="">
+    <section id="attractions" className="py-4 px-8 bg-gray-50">
+      <div className="max-w-8xl mx-auto px-4">
         {/* White Card Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white ms-[5%] rounded-s-2xl py-8 md:py-12 ps-8 md:ps-12 shadow-lg"
+          className="bg-white rounded-2xl py-8 md:py-12 px-8 md:px-12 shadow-lg"
         >
           {/* Header Section */}
-          <div className="text-center mb-12 me-[14%]">
+          <div className="text-center mb-12">
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -187,22 +187,22 @@ const AttractionsSection = () => {
                 <motion.div
                   key={attraction.id}
                   variants={itemVariants}
-                  className="flex-none w-40 sm:w-48 md:w-56 snap-start"
+                  className="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 snap-start"
                   whileHover={{ y: -3 }}
                 >
                   <Link
                     to={`/attraction/${attraction.id}`}
                     className="block group"
                   >
-                    <div className="text-center">
+                    <div className="">
                       {/* Image */}
-                      <div className="relative mb-4">
+                      <div className="relative mb-3">
                         <motion.img
                           whileHover={{ scale: 1.02 }}
                           transition={{ duration: 0.3 }}
                           src={attraction.image}
                           alt={attraction.title}
-                          className="w-full h-44 sm:h-56 md:h-64 object-cover rounded-xl"
+                          className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg"
                         />
                         {/* Rating Badge */}
                         <div className="absolute top-3 left-3">
@@ -210,11 +210,11 @@ const AttractionsSection = () => {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-gray-900 text-white px-2 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+                            className="bg-gray-900 text-white px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1"
                           >
                             <Star
                               className="text-yellow-400"
-                              size={14}
+                              size={12}
                               fill="currentColor"
                             />
                             {attraction.rating}
@@ -227,7 +227,7 @@ const AttractionsSection = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.2 }}
-                        className="text-coral-orange text-xs font-semibold uppercase tracking-wider mb-2"
+                        className="text-coral-orange text-[10px] font-semibold uppercase tracking-wider mb-1"
                       >
                         {attraction.categoryLabel}
                       </motion.p>
@@ -237,15 +237,23 @@ const AttractionsSection = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.3 }}
-                        className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-coral-orange transition-colors duration-200 line-clamp-2"
+                        className="text-sm sm:text-base font-semibold text-gray-900 group-hover:text-coral-orange transition-colors duration-200 line-clamp-2 mb-2"
                       >
                         {attraction.title}
                       </motion.h3>
+
+                      {/* View Button */}
+                      <div className="hidden sm:flex justify-end mt-auto">
+                        <Button className="rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-0.5">
+                          View
+                        </Button>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
               ))}
             </motion.div>
+
             {/* Navigation Controls */}
             <div className="flex flex-col me-[14%] sm:flex-row justify-between items-center mt-8 gap-4 sm:gap-0">
               {/* See All Button */}
@@ -301,7 +309,6 @@ const AttractionsSection = () => {
               </motion.div>
             </div>
           </div>
-
         </motion.div>
       </div>
     </section>

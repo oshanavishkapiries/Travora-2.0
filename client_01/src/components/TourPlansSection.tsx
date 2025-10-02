@@ -131,18 +131,18 @@ const TourPlansSection = () => {
   };
 
   return (
-    <section id="tours" className="py-4 bg-gray-50">
-      <div className="">
+    <section id="tours" className="py-4 px-8 bg-gray-50">
+      <div className="max-w-8xl mx-auto px-4">
         {/* White Card Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white me-[5%] rounded-e-2xl py-8 md:py-12 pe-8 md:pe-12 ps-2 md:ps-4 shadow-lg"
+          className="bg-white rounded-2xl py-8 md:py-12 px-8 md:px-12 shadow-lg"
         >
           {/* Header Section */}
-          <div className="text-center mb-12 ms-[14%]">
+          <div className="text-center mb-12">
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -171,26 +171,26 @@ const TourPlansSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex gap-4 rounded-2xl md:gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
+              className="flex gap-4 pe-4 rounded-s-2xl md:gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
               style={{ scrollSnapType: "x mandatory" }}
             >
               {tourPlans.slice(0, 6).map((plan, index) => (
                 <motion.div
                   key={plan.id}
                   variants={itemVariants}
-                  className="flex-none w-40 sm:w-48 md:w-56 snap-start"
-                  whileHover={{ y: -3 }}  
+                  className="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 snap-start"
+                  whileHover={{ y: -3 }}
                 >
                   <Link to={`/tour/${plan.id}`} className="block group">
-                    <div className="text-center">
+                    <div className="">
                       {/* Image */}
-                      <div className="relative mb-4">
+                      <div className="relative mb-3">
                         <motion.img
                           whileHover={{ scale: 1.02 }}
                           transition={{ duration: 0.3 }}
                           src={plan.image}
                           alt={plan.title}
-                          className="w-full h-44 sm:h-56 md:h-64 object-cover rounded-xl"
+                          className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg"
                         />
                         {/* Rating Badge */}
                         <div className="absolute top-3 left-3">
@@ -198,23 +198,23 @@ const TourPlansSection = () => {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-gray-900 text-white px-2 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+                            className="bg-gray-900 text-white px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1"
                           >
                             <Star
                               className="text-yellow-400"
-                              size={14}
+                              size={12}
                               fill="currentColor"
                             />
                             {plan.rating}
                           </motion.div>
                         </div>
                         {/* Duration Badge */}
-                        <div className="absolute top-3 right-3">
+                        <div className="hidden sm:block absolute top-3 right-3">
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: index * 0.1 + 0.1 }}
-                            className="bg-coral-orange text-white px-2 py-1 rounded-lg text-sm font-medium flex items-center gap-1"
+                            className="bg-coral-orange text-white px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1"
                           >
                             <Clock size={14} />
                             {plan.duration}
@@ -227,7 +227,7 @@ const TourPlansSection = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.2 }}
-                        className="text-coral-orange text-xs font-semibold uppercase tracking-wider mb-2"
+                        className="text-coral-orange text-[10px] font-semibold uppercase tracking-wider mb-1"
                       >
                         {plan.categoryLabel}
                       </motion.p>
@@ -237,23 +237,25 @@ const TourPlansSection = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.3 }}
-                        className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-coral-orange transition-colors duration-200 line-clamp-2 mb-2"
+                        className="text-sm sm:text-base font-semibold text-gray-900 group-hover:text-coral-orange transition-colors duration-200 line-clamp-2 mb-2"
                       >
                         {plan.title}
                       </motion.h3>
 
-                      {/* Price */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: index * 0.1 + 0.4 }}
-                        className="text-coral-orange font-bold"
-                      >
-                        <span className="text-lg">{plan.price}</span>
-                        <span className="text-sm text-gray-500">
-                          /{plan.priceUnit}
-                        </span>
-                      </motion.div>
+                      {/* Price + Button */}
+                      <div className="flex justify-between items-center mt-auto">
+                        <div>
+                          <span className="text-base font-bold text-slate-900">
+                            {plan.price}
+                          </span>
+                          <span className="text-xs text-slate-500">
+                            /{plan.priceUnit}
+                          </span>
+                        </div>
+                        <Button className="hidden sm:block rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-0.5">
+                          View
+                        </Button>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
@@ -261,7 +263,7 @@ const TourPlansSection = () => {
             </motion.div>
 
             {/* Navigation Controls */}
-            <div className="flex flex-col ms-[14%] sm:flex-row justify-between items-center mt-8 gap-4 sm:gap-0">
+            <div className="flex flex-col me-[14%] sm:flex-row justify-between items-center mt-8 gap-4 sm:gap-0">
               {/* See All Button */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}

@@ -134,7 +134,7 @@ const ServiceHighlights = () => {
 
   return (
     <section className="py-16 px-4 bg-gradient-to-br from-stone-50 via-amber-50 to-orange-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-8xl px-16 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Images Grid with Size Variations */}
           <motion.div

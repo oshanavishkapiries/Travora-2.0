@@ -9,16 +9,23 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-dark shadow-md hover:shadow-lg transform hover:-translate-y-0.5",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default:
+          "bg-primary text-primary-foreground hover:bg-primary-dark shadow-md hover:shadow-lg transform hover:-translate-y-0.5",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-primary-light hover:text-primary-foreground",
+
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         hero: "bg-background/10 text-background border border-background/20 hover:bg-background/20 backdrop-blur-sm",
         pill: "rounded-full bg-primary text-primary-foreground hover:bg-primary-dark shadow-md hover:shadow-lg transform hover:-translate-y-0.5",
-        "pill-outline": "rounded-full border border-foreground/20 bg-background/10 hover:bg-background/20 backdrop-blur-sm",
-        "call-now": "rounded-full bg-foreground text-background hover:bg-foreground/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1",
+        "pill-outline":
+          "rounded-full border border-foreground/20 bg-background/10 hover:bg-background/20 backdrop-blur-sm",
+        "call-now":
+          "rounded-full bg-foreground text-background hover:bg-foreground/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -31,7 +38,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps

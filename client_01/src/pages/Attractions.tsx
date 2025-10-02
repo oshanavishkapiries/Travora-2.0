@@ -310,43 +310,51 @@ const Attractions = () => {
                         className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
 
-                      {/* Rating Badge */}
-                      <div className="absolute bottom-4 right-4">
-                        <div className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1.5 rounded-full text-sm font-semibold flex items-center gap-1 shadow-lg">
+                    {/* Content */}
+                    <div className="p-6">
+                      {/* Title + Rating */}
+                      <div className="flex items-center justify-between mb-2">
+                        <h2 className="text-lg md:text-xl font-bold text-gray-900 line-clamp-1">
+                          {attraction.title}
+                        </h2>
+                        <div className="flex items-center bg-blue-100 text-gray-900 px-2 py-0.5 rounded-full text-xs font-semibold">
                           <Star
-                            className="text-yellow-400"
+                            className="text-yellow-400 mr-1"
                             size={14}
                             fill="currentColor"
                           />
                           {attraction.rating}
                         </div>
                       </div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      {/* Category Label */}
-                      <div className="mb-3">
-                        <span className="text-coral-orange text-xs font-bold uppercase tracking-wider">
+                      {/* Category */}
+                      <div className="mb-2">
+                        <span className="text-blue-600 text-xs font-semibold uppercase tracking-wide">
                           {attraction.categoryLabel}
                         </span>
                       </div>
 
-                      {/* Title */}
-                      <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 font-serif group-hover:text-coral-orange transition-colors duration-300">
-                        {attraction.title}
-                      </h2>
-
                       {/* Description */}
-                      <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
+                      <p className="text-gray-600 leading-relaxed mb-3 text-sm md:text-base">
                         {attraction.description}
                       </p>
 
                       {/* Location */}
-                      <div className="flex items-center text-gray-500 text-sm">
-                        <MapPin size={16} className="mr-2 text-coral-orange" />
+                      <div className="flex items-center text-gray-500 text-sm mb-4">
+                        <MapPin size={16} className="mr-2 text-blue-600" />
                         <span>{attraction.location}</span>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="w-full h-px bg-gray-200 mb-4"></div>
+
+                      {/* Button */}
+                      <div className="flex justify-end">
+                        <Button className="w-full max-w-[120px] rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm py-2">
+                          View
+                        </Button>
                       </div>
                     </div>
                   </article>
@@ -359,7 +367,7 @@ const Attractions = () => {
           {loading && (
             <div className="flex justify-center py-12">
               <div className="flex items-center space-x-3">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-coral-orange"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                 <span className="text-gray-600 font-medium">
                   Loading more attractions...
                 </span>
@@ -379,7 +387,7 @@ const Attractions = () => {
                 <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
                   <MapPin className="w-12 h-12 text-gray-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 font-serif">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   No attractions found
                 </h3>
                 <p className="text-gray-600 mb-8">
@@ -389,7 +397,7 @@ const Attractions = () => {
                 <Button
                   variant="outline"
                   onClick={() => setActiveFilter("All")}
-                  className="rounded-full px-8 py-3 border-coral-orange text-coral-orange hover:bg-coral-orange hover:text-white transition-all duration-300"
+                  className="rounded-full px-8 py-3 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
                 >
                   View All Attractions
                 </Button>

@@ -17,13 +17,14 @@ export async function registerUser(data: {
 export async function loginUser(email: string, password: string) {
   const user = await UserModel.getUserByEmail(email);
   if (!user) throw new Error("User not found");
-  
+
   const isPasswordValid = await compare(password, user.password);
   if (!isPasswordValid) throw new Error("Invalid password");
-  
+
   return user;
 }
 
 export async function getProfile(id: number) {
   return await UserModel.getUserById(id);
 }
+//hello

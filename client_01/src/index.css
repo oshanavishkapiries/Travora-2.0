@@ -1,15 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Pro:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Travora Travel Website Design System
-   Coral-Orange theme - warm & inviting travel-inspired
-   All colors in HSL
+   Blue theme with Britannica-style editorial fonts
 */
-
 
 @layer base {
   :root {
@@ -17,11 +14,11 @@
     --background: 0 0% 100%;
     --foreground: 220 13% 18%;
 
-    /* Primary - Coral Orange */
-    --primary: 12 76% 61%; /* coral-orange #E56B5A */
+    /* Primary - Blue */
+    --primary: 210 100% 50%;       /* active button */
     --primary-foreground: 0 0% 100%;
-    --primary-light: 12 76% 75%;
-    --primary-dark: 12 76% 45%;
+    --primary-light: 210 100% 60%; /* optional lighter blue */
+    --primary-dark: 210 100% 40%;  /* hover button */
 
     /* Secondary - Warm Beige */
     --secondary: 30 25% 85%;
@@ -39,7 +36,7 @@
     /* Interactive States */
     --border: 30 15% 85%;
     --input: 30 15% 85%;
-    --ring: 12 76% 61%;
+    --ring: 210 100% 50%;
 
     /* Status Colors */
     --success: 142 76% 36%;
@@ -49,8 +46,9 @@
 
     /* Travel-specific Colors */
     --rating-star: 43 96% 56%;
-    --coral-orange: 12 76% 61%; /* #E56B5A - now primary accent */
+    --coral-orange: 210 100% 50%;       /* renamed for backward compatibility */
     --coral-orange-foreground: 0 0% 100%;
+    --coral-orange-dark: 210 100% 40%;  /* hover for buttons */
     --hero-overlay: 12 25% 20% / 0.45;
     --nav-glass: 0 0% 100% / 0.95;
 
@@ -77,12 +75,12 @@
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 12 25% 20%;
-    --sidebar-primary: 12 76% 45%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary: 210 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 12 25% 95%;
-    --sidebar-accent-foreground: 12 76% 45%;
+    --sidebar-accent-foreground: 210 100% 40%;
     --sidebar-border: 30 15% 85%;
-    --sidebar-ring: 12 76% 61%;
+    --sidebar-ring: 210 100% 50%;
   }
 
   .dark {
@@ -97,54 +95,105 @@
     --accent-foreground: 0 0% 98%;
     --border: 12 25% 20%;
     --input: 12 25% 20%;
-    --coral-orange: 12 76% 61%; /* Same color for dark mode */
+    --coral-orange: 210 100% 50%;
     --coral-orange-foreground: 0 0% 100%;
+    --coral-orange-dark: 210 100% 40%;
     --hero-overlay: 12 25% 10% / 0.6;
     --nav-glass: 12 25% 8% / 0.95;
     --sidebar-background: 12 25% 10%;
     --sidebar-foreground: 12 25% 95%;
-    --sidebar-primary: 12 76% 65%;
+    --sidebar-primary: 210 100% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 12 25% 20%;
-    --sidebar-accent-foreground: 12 25% 95%;
+    --sidebar-accent-foreground: 210 100% 40%;
     --sidebar-border: 12 25% 20%;
-    --sidebar-ring: 12 76% 61%;
+    --sidebar-ring: 210 100% 50%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      sans-serif;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700; /* Bold for entire body */
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  /* Headings use Crimson Pro - Britannica editorial style */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Crimson Pro", "Libre Baskerville", Georgia, "Times New Roman", serif;
+    font-weight: 600; /* Semibold for refined elegance */
+    line-height: 1.25;
+    letter-spacing: -0.02em; /* Tight letter spacing for editorial feel */
+    color: hsl(220 13% 15%); /* Slightly darker for authority */
+  }
+
+  /* Specific heading sizes with Britannica proportions */
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
     line-height: 1.2;
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  h5 {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h6 {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  /* Dark mode heading adjustments */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: hsl(0 0% 98%);
+  }
+
+  /* Ensure all text elements inherit Inter Bold */
+  p, span, div:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6), a, button, input, textarea, label, li, td, th {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+  }
+
+  /* Body text refinements for readability */
+  p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
   }
 }
 
 @layer components {
   /* Hero Section Styles */
   .hero-overlay {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--hero-overlay)) 0%,
-      transparent 100%
-    );
+    background: linear-gradient(135deg, hsl(var(--hero-overlay)) 0%, transparent 100%);
   }
 
   /* Glass Navigation */
@@ -158,7 +207,6 @@
   .card-hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
   .card-hover:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-floating);
@@ -169,27 +217,41 @@
     color: hsl(var(--rating-star));
   }
 
-  /* Hide scrollbar for horizontal scroll panels */
+  /* Hide scrollbar */
   .scrollbar-hide {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
   }
 
-  /* Line clamp utilities for text truncation */
+  /* Line clamp utilities */
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
   }
-
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+
+  /* Editorial heading styles for special cases */
+  .heading-editorial {
+    font-family: "Crimson Pro", "Libre Baskerville", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .heading-display {
+    font-family: "Crimson Pro", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 }

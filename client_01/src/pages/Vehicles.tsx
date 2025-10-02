@@ -314,143 +314,70 @@ const Vehicles = () => {
                       className="w-full h-32 md:h-48 aspect-square md:aspect-auto object-cover"
                     />
                     <div className="absolute top-3 left-3">
-                      <div className="bg-secondary text-secondary-foreground px-3 py-1 rounded-md text-sm font-medium">
+                      <div className="bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium">
                         {vehicle.type}
                       </div>
                     </div>
                   </div>
 
                   <div className="p-3 md:p-6 flex flex-col h-[calc(100%-8rem)] md:h-[calc(100%-12rem)]">
-                    <h3 className="text-sm md:text-xl font-semibold mb-1 md:mb-2 text-center line-clamp-1">
+                    <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2 text-left line-clamp-1">
                       {vehicle.model}
                     </h3>
 
                     {/* Description - hidden on mobile */}
-                    <p className="hidden md:block text-muted-foreground text-sm mb-4 flex-grow text-center">
+                    <p className="hidden md:block text-muted-foreground text-sm mb-4 flex-grow text-left">
                       {vehicle.description}
                     </p>
 
-                    {/* Specs - hidden on mobile */}
-                    <div className="hidden md:grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center">
-                        <Fuel
-                          className="mx-auto mb-2 text-muted-foreground"
-                          size={20}
-                        />
-                        <div className="text-sm font-medium">
+                    {/* Specs simplified into one row */}
+                    <div className="hidden md:flex items-center gap-4 mb-3 text-left">
+                      {/* Fuel */}
+                      <div className="flex items-center gap-2 bg-white text-blue-600 px-3 py-1 rounded-md border border-blue-600">
+                        <Fuel size={16} />
+                        <span className="text-xs font-medium">
                           {vehicle.specs.fuel}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Fuel
-                        </div>
+                        </span>
                       </div>
-                      <div className="text-center">
-                        <Settings
-                          className="mx-auto mb-2 text-muted-foreground"
-                          size={20}
-                        />
-                        <div className="text-sm font-medium">
+
+                      {/* Transmission */}
+                      <div className="flex items-center gap-2 bg-white text-blue-600 px-3 py-1 rounded-md border border-blue-600">
+                        <Settings size={16} />
+                        <span className="text-xs font-medium">
                           {vehicle.specs.transmission}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Transmission
-                        </div>
+                        </span>
                       </div>
-                      <div className="text-center">
-                        <Users
-                          className="mx-auto mb-2 text-muted-foreground"
-                          size={20}
-                        />
-                        <div className="text-sm font-medium">
+
+                      {/* Capacity */}
+                      <div className="flex items-center gap-2 bg-white text-blue-600 px-3 py-1 rounded-md border border-blue-600">
+                        <Users size={16} />
+                        <span className="text-xs font-medium">
                           {vehicle.specs.capacity}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Capacity
-                        </div>
+                        </span>
                       </div>
                     </div>
+                    <hr className="border-t border-gray-300 my-3" />
 
-                    {/* Price */}
-                    <div className="text-center mb-2 md:mb-6">
-                      <span className="text-lg md:text-2xl font-bold text-primary">
-                        {vehicle.price}
-                      </span>
-                      <span className="text-xs md:text-base text-muted-foreground">
-                        /{vehicle.priceUnit}
-                      </span>
+                    {/* Price + Button on same row */}
+                    <div className="flex items-center justify-between mb-2 md:mb-6">
+                      <div>
+                        <span className="text-lg md:text-2xl font-bold text-black">
+                          {vehicle.price}
+                        </span>
+                        <span className="text-xs md:text-base text-muted-foreground">
+                          /{vehicle.priceUnit}
+                        </span>
+                      </div>
+
+                      <Button className="hidden md:block rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-7 py-0.5">
+                        View
+                      </Button>
                     </div>
-
-                    {/* Button - hidden on mobile */}
-                    <Button
-                      variant="pill"
-                      className="w-full mt-auto hidden md:block"
-                    >
-                      View Details
-                    </Button>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-
-          {/* Empty State */}
-          {currentVehicles.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
-                No vehicles found for "{activeFilter}" type.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => setActiveFilter("All")}
-                className="mt-4"
-              >
-                View All Vehicles
-              </Button>
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center space-x-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="flex items-center gap-2"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                Previous
-              </Button>
-
-              <div className="flex items-center space-x-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (page) => (
-                    <Button
-                      key={page}
-                      variant={currentPage === page ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => goToPage(page)}
-                      className="w-10 h-10"
-                    >
-                      {page}
-                    </Button>
-                  )
-                )}
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => goToPage(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="flex items-center gap-2"
-              >
-                Next
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-          )}
         </div>
       </div>
 
